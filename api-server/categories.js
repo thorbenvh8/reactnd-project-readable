@@ -25,7 +25,7 @@ function getData (token) {
   let data = db[token]
   //This populates the default user data if there isn't any in the db.
   if (data == null) {
-    data = db[token] = clone(defaultData)
+    data = db[token] = clone(defaultData.categories)
   }
   return data
 }
