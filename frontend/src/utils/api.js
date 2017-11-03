@@ -15,6 +15,21 @@ export function fetchPosts () {
     .then((res) => res.json())
 }
 
+export function votePost (id, option) {
+  return fetch(
+    `${api}/posts/${id}`,
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ option })
+    }
+  )
+    .then((res) => res.json())
+}
+
 export function fetchCategories () {
   return fetch(`${api}/categories`, { headers })
     .then((res) => res.json())

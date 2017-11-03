@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { fetchPosts, fetchCategories } from '../utils/api'
 import { loadPosts } from '../actions/posts'
 import { loadCategories } from '../actions/categories'
+import PostsList from './PostsList'
 
 class App extends Component {
   componentDidMount() {
@@ -24,17 +25,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Posts</h1>
-        <ul>
-        { this.props.posts.map(post => (
-          <li key={post.id}>{post.title}</li>
-        ))}
-        </ul>
+        <PostsList posts={this.props.posts}/>
         <h1>Categories</h1>
         <ul>
-        { this.props.categories.map(category => (
-          <li key={category.name}>{category.name}</li>
-        ))}
+          { this.props.categories.map(category => (
+            <li key={category.name}>{category.name}</li>
+          ))}
         </ul>
       </div>
     )
