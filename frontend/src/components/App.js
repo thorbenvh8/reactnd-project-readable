@@ -4,6 +4,7 @@ import { fetchPosts, fetchCategories } from '../utils/api'
 import { loadPosts } from '../actions/posts'
 import { loadCategories } from '../actions/categories'
 import PostsList from './PostsList'
+import CategoriesList from './CategoriesList'
 
 class App extends Component {
   componentDidMount() {
@@ -26,12 +27,7 @@ class App extends Component {
     return (
       <div className="App">
         <PostsList posts={this.props.posts}/>
-        <h1>Categories</h1>
-        <ul>
-          { this.props.categories.map(category => (
-            <li key={category.name}>{category.name}</li>
-          ))}
-        </ul>
+        <CategoriesList categories={this.props.categories}/>
       </div>
     )
   }
