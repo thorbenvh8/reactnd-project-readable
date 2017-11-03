@@ -31,6 +31,27 @@ class PostsList extends Component {
     this.setState({ orderBy: getOrderBy(property, this.state.orderBy) })
   }
 
+  getDateString(timestamp) {
+    var date = new Date(timestamp)
+
+    // Day part from the timestamp
+    var day = date.getDay()
+    // Month part from the timestamp
+    var month = date.getMonth()
+    // Year part from the timestamp
+    var year = date.getFullYear()
+
+    // Hours part from the timestamp
+    var hours = date.getHours()
+    // Minutes part from the timestamp
+    var minutes = "0" + date.getMinutes()
+    // Seconds part from the timestamp
+    var seconds = "0" + date.getSeconds()
+
+    // Will display date with time in 11/02/2017 10:30:23 format
+    return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2)
+  }
+
   render() {
     return (
       <div>
@@ -40,6 +61,7 @@ class PostsList extends Component {
             <tr>
               <SortableTableHeaderColumn property="title" orderBy={this.state.orderBy} onClick={this.sortPosts}>Title</SortableTableHeaderColumn>
               <SortableTableHeaderColumn property="author" orderBy={this.state.orderBy} onClick={this.sortPosts}>Author</SortableTableHeaderColumn>
+              <SortableTableHeaderColumn property="timestamp" orderBy={this.state.orderBy} onClick={this.sortPosts}>Date</SortableTableHeaderColumn>
               <SortableTableHeaderColumn property="commentCount" orderBy={this.state.orderBy} onClick={this.sortPosts}>Comments</SortableTableHeaderColumn>
               <SortableTableHeaderColumn colSpan="2" property="voteScore" orderBy={this.state.orderBy} onClick={this.sortPosts}>Votes</SortableTableHeaderColumn>
               <th></th>
@@ -55,6 +77,7 @@ class PostsList extends Component {
               <tr key={post.id}>
                 <td><Link to={'/' + post.category + '/' + post.id}>{post.title}</Link></td>
                 <td>{post.author}</td>
+                <td>{ this.getDateString(post.timestamp) }</td>
                 <td>{post.commentCount}</td>
                 <td>{post.voteScore}</td>
                 <td>
