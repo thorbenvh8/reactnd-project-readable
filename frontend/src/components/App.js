@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter, Switch, Route, Link } from 'react-router-dom'
 import { fetchPosts, fetchCategories } from '../utils/api'
 import { loadPosts } from '../actions/posts'
 import { loadCategories } from '../actions/categories'
-import PostsList from './PostsList'
 import CategoriesList from './CategoriesList'
+import Main from './Main'
+import Category from './Category'
 
 class App extends Component {
   componentDidMount() {
@@ -26,14 +28,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <PostsList posts={this.props.posts}/>
+        <Link to="/">Readable</Link>
         <CategoriesList categories={this.props.categories}/>
+        <Switch>
+          <Route exact path="/" component={Main}/>
+          <Route exact path='/:category' component={Category}/>
+        </Switch>
       </div>
     )
   }
 }
 
-function mapStateToProps ({ posts, categories }) {
+function mapStateToProps ({ posts, categories }, ownProps) {
   return {
     posts: posts.list,
     categories: categories.list
@@ -47,7 +53,9 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(App)
+)
