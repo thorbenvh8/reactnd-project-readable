@@ -15,9 +15,32 @@ export function fetchPosts () {
     .then((res) => res.json())
 }
 
-export function votePost (id, option) {
+export function votePost (postId, option) {
   return fetch(
-    `${api}/posts/${id}`,
+    `${api}/posts/${postId}`,
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ option })
+    }
+  )
+    .then((res) => res.json())
+}
+
+export function fetchComments (postId) {
+  return fetch(`${api}/posts/${postId}/comments`, { headers })
+    .then((res) => res.json())
+    .then((comments) => {
+        return { postId, comments }
+    })
+}
+
+export function voteComment (commentId, option) {
+  return fetch(
+    `${api}/comments/${commentId}`,
     {
       method: 'POST',
       headers: {

@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { updatePost } from '../actions/posts'
-import { votePost } from '../utils/api'
+import * as API from '../utils/api'
 import { getOrderBy, DESCENDING } from '../utils/sorting'
+import { getDateString } from '../utils/date'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
-import FaSortAsc from 'react-icons/lib/fa/sort-asc'
-import FaSortDesc from 'react-icons/lib/fa/sort-desc'
+import SortableTableHeaderColumn from './SortableTableHeaderColumn'
 
 class PostsList extends Component {
   state = {
@@ -18,38 +18,17 @@ class PostsList extends Component {
   }
 
   upVotePost = (postId) => {
-    votePost(postId, "upVote")
+    API.votePost(postId, "upVote")
       .then(post => this.props.updatePost({ post }))
   }
 
   downVotePost = (postId) => {
-    votePost(postId, "downVote")
+    API.votePost(postId, "downVote")
       .then(post => this.props.updatePost({ post }))
   }
 
   sortPosts = (property) => {
     this.setState({ orderBy: getOrderBy(property, this.state.orderBy) })
-  }
-
-  getDateString(timestamp) {
-    var date = new Date(timestamp)
-
-    // Day part from the timestamp
-    var day = date.getDay()
-    // Month part from the timestamp
-    var month = date.getMonth()
-    // Year part from the timestamp
-    var year = date.getFullYear()
-
-    // Hours part from the timestamp
-    var hours = date.getHours()
-    // Minutes part from the timestamp
-    var minutes = "0" + date.getMinutes()
-    // Seconds part from the timestamp
-    var seconds = "0" + date.getSeconds()
-
-    // Will display date with time in 11/02/2017 10:30:23 format
-    return month + '/' + day + '/' + year + ' ' + hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2)
   }
 
   render() {
@@ -77,7 +56,7 @@ class PostsList extends Component {
               <tr key={post.id}>
                 <td><Link to={'/' + post.category + '/' + post.id}>{post.title}</Link></td>
                 <td>{post.author}</td>
-                <td>{ this.getDateString(post.timestamp) }</td>
+                <td>{getDateString(post.timestamp)}</td>
                 <td>{post.commentCount}</td>
                 <td>{post.voteScore}</td>
                 <td>
@@ -111,15 +90,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PostsList)
-
-const SortableTableHeaderColumn = (props) =>
-  <th colSpan={ props.colSpan ? props.colSpan : 1} onClick={() => props.onClick(props.property)}>
-    { props.children }
-    { props.orderBy.property === props.property &&
-      (
-        props.orderBy.direction === DESCENDING ?
-        <FaSortDesc size={18}/> :
-        <FaSortAsc size={18}/>
-      )
-    }
-  </th>

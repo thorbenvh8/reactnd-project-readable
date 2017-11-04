@@ -1,6 +1,5 @@
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const UPDATE_POST = 'UPDATE_POST'
-export const SORT_POSTS = 'SORT_POSTS'
 
 export function loadPosts({ posts }) {
   return {
