@@ -1,6 +1,7 @@
 export const LOAD_POSTS = 'LOAD_POSTS'
 export const UPDATE_POST = 'UPDATE_POST'
 export const CREATE_POST = 'CREATE_POST'
+export const DELETE_POST = 'DELETE_POST'
 
 export function loadPosts({ posts }) {
   return {
@@ -20,5 +21,12 @@ export function createPost({ post }) {
   return {
     type: CREATE_POST,
     post
+  }
+}
+
+export function deletePost({ postId }) {
+  return {
+    type: DELETE_POST,
+    postId
   }
 }

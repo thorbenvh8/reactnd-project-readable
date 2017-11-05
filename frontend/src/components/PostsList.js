@@ -7,9 +7,9 @@ import { getOrderBy, DESCENDING } from '../utils/sorting'
 import { getDateString } from '../utils/date'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
-import FaTrashO from 'react-icons/lib/fa/trash-o'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
+import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 
 class PostsList extends Component {
   state = {
@@ -71,9 +71,7 @@ class PostsList extends Component {
                 </td>
                 <td>
                   <CreateUpdatePostButtonWithDialog post={post} />
-                  <button onClick={() => console.log('delete')} className='icon-btn'>
-                    <FaTrashO size={30}/>
-                  </button>
+                  <DeletePostButtonWithDialog post={post} />
                 </td>
               </tr>
             ))}
