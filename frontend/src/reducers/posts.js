@@ -2,7 +2,8 @@ import update from 'immutability-helper'
 
 import {
   LOAD_POSTS,
-  UPDATE_POST
+  UPDATE_POST,
+  CREATE_POST
 } from '../actions/posts'
 
 const initialPostsState = {
@@ -18,7 +19,7 @@ function posts(state = initialPostsState, action) {
         list
       }
     case UPDATE_POST :
-      const { post } = action
+      var { post } = action
       var postIndex = state.list.findIndex(function(p) {
         return p.id === post.id;
       })
@@ -26,6 +27,14 @@ function posts(state = initialPostsState, action) {
         ...state,
         list: update(state.list, {
             $splice: [[postIndex, 1, post]]
+        })
+      }
+    case CREATE_POST :
+      var { post } = action
+      return {
+        ...state,
+        list: update(state.list, {
+            $push: [post]
         })
       }
     default :

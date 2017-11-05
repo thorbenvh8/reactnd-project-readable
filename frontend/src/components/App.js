@@ -48,9 +48,8 @@ class App extends Component {
   }
 }
 
-function mapStateToProps ({ posts, categories }, ownProps) {
+function mapStateToProps ({ categories }, ownProps) {
   return {
-    posts: posts.list,
     categories: categories.list
   }
 }

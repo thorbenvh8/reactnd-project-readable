@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import { updatePost } from '../actions/posts'
 import * as API from '../utils/api'
 import { getOrderBy, DESCENDING } from '../utils/sorting'
 import { getDateString } from '../utils/date'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
+import FaTrashO from 'react-icons/lib/fa/trash-o'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
+import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 
 class PostsList extends Component {
   state = {
@@ -67,6 +69,12 @@ class PostsList extends Component {
                     <FaThumbsODown size={30}/>
                   </button>
                 </td>
+                <td>
+                  <CreateUpdatePostButtonWithDialog post={post} />
+                  <button onClick={() => console.log('delete')} className='icon-btn'>
+                    <FaTrashO size={30}/>
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
@@ -86,7 +94,9 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PostsList)
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PostsList)
+)

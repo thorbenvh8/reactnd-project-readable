@@ -6,6 +6,7 @@ import * as API from '../utils/api'
 import CommentsList from './CommentsList'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
+import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 
 const style = {
   label: {
@@ -42,6 +43,7 @@ class Post extends Component {
           </button>
         </div>
         <Label title="Body" value={this.props.post.body}/>
+        <CreateUpdatePostButtonWithDialog post={this.props.post} />
         <CommentsList comments={this.props.comments}/>
       </div>
     )

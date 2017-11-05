@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PostsList from './PostsList'
+import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 
 class Main extends Component {
   render() {
     return (
       <div>
         <PostsList posts={this.props.posts}/>
+        <CreateUpdatePostButtonWithDialog />
       </div>
     )
   }

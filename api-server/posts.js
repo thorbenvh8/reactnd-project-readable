@@ -1,9 +1,10 @@
 const clone = require('clone')
+const uuidv4 = require('uuid/v4')
 
 let db = {}
 
 const defaultData = {
-  "8xf0y6ziyjabvozdd253nd": {
+  '8xf0y6ziyjabvozdd253nd': {
     id: '8xf0y6ziyjabvozdd253nd',
     timestamp: 1467166872634,
     title: 'Udacity is the best place to learn React',
@@ -14,7 +15,7 @@ const defaultData = {
     deleted: false,
     commentCount: 2
   },
-  "6ni6ok3ym7mf1p33lnez": {
+  '6ni6ok3ym7mf1p33lnez': {
     id: '6ni6ok3ym7mf1p33lnez',
     timestamp: 1468479767190,
     title: 'Learn Redux in 10 minutes!',
@@ -68,9 +69,11 @@ function add (token, post) {
   return new Promise((res) => {
     let posts = getData(token)
 
+    post.id = uuidv4()
+
     posts[post.id] = {
       id: post.id,
-      timestamp: post.timestamp,
+      timestamp: Date.now(),
       title: post.title,
       body: post.body,
       author: post.author,

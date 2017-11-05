@@ -30,6 +30,46 @@ export function votePost (postId, option) {
     .then((res) => res.json())
 }
 
+export function createPost (post) {
+  return fetch(
+    `${api}/posts`,
+    {
+      method: 'POST',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: post.title,
+        author: post.author,
+        category: post.category,
+        body: post.body
+      })
+    }
+  )
+    .then((res) => res.json())
+}
+
+export function updatePost (postId, post) {
+  return fetch(
+    `${api}/posts/${postId}`,
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        title: post.title,
+        author: post.author,
+        category: post.category,
+        body: post.body
+      })
+    }
+  )
+    .then((res) => res.json())
+}
+
 export function fetchComments (postId) {
   return fetch(`${api}/posts/${postId}/comments`, { headers })
     .then((res) => res.json())
