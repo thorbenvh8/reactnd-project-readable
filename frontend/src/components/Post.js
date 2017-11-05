@@ -7,6 +7,7 @@ import CommentsList from './CommentsList'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
+import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 
 const style = {
   label: {
@@ -27,34 +28,41 @@ class Post extends Component {
   }
 
   render() {
+    console.log("post", this.props.post)
     return (
       <div>
         <h1>Post</h1>
-        <Label title="Title" value={this.props.post.title}/>
-        <Label title="Author" value={this.props.post.author}/>
-        <Label title="Date" value={getDateString(this.props.post.timestamp)}/>
-        <div>
-          <Label title="Vote" value={this.props.post.voteScore}/>
-          <button onClick={() => this.upVotePost(this.props.post.id)} className='icon-btn'>
-            <FaThumbsOUp size={30}/>
-          </button>
-          <button onClick={() => this.downVotePost(this.props.post.id)} className='icon-btn'>
-            <FaThumbsODown size={30}/>
-          </button>
-        </div>
-        <Label title="Body" value={this.props.post.body}/>
-        <CreateUpdatePostButtonWithDialog post={this.props.post} />
-        <CommentsList comments={this.props.comments}/>
+        { this.props.post === undefined && (<p>Post does not exist!</p>)}
+        { this.props.post !== undefined && (
+          <div>
+            <Label title="Title" value={this.props.post.title}/>
+            <Label title="Author" value={this.props.post.author}/>
+            <Label title="Date" value={getDateString(this.props.post.timestamp)}/>
+            <div>
+              <Label title="Vote" value={this.props.post.voteScore}/>
+              <button onClick={() => this.upVotePost(this.props.post.id)} className='icon-btn'>
+                <FaThumbsOUp size={30}/>
+              </button>
+              <button onClick={() => this.downVotePost(this.props.post.id)} className='icon-btn'>
+                <FaThumbsODown size={30}/>
+              </button>
+            </div>
+            <Label title="Body" value={this.props.post.body}/>
+            <CreateUpdatePostButtonWithDialog post={this.props.post} />
+            <DeletePostButtonWithDialog post={this.props.post} />
+            <CommentsList comments={this.props.comments}/>
+          </div>
+        )}
       </div>
     )
   }
 }
 
 function mapStateToProps ({ posts, comments, categories }, ownProps) {
-  var post = posts.list.find(post => post.id === ownProps.match.params.postId) ? posts.list.find(post => post.id === ownProps.match.params.postId) : {}
+  var post = posts.list.find(post => post.id === ownProps.match.params.postId)
   return {
     post,
-    comments: comments[post.id] ? comments[post.id] : []
+    comments: comments[ownProps.match.params.postId] ? comments[ownProps.match.params.postId] : []
   }
 }
 
