@@ -6,6 +6,7 @@ import { updatePost, createPost } from '../actions/posts'
 import Modal from 'react-modal'
 import * as API from '../utils/api'
 import FaPencil from 'react-icons/lib/fa/pencil'
+import FaPlus from 'react-icons/lib/fa/plus'
 
 class CreateUpdatePostButtonWithDialog extends Component {
   constructor(props) {
@@ -14,12 +15,26 @@ class CreateUpdatePostButtonWithDialog extends Component {
     var post = props.post ? props.post : {
       title: '',
       author: '',
-      category: '',
+      category: props.category ? props.category : '',
       body: ''
     }
 
     this.state = {
       post
+    }
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.post === undefined) {
+      var post = this.state.post
+      post.category = props.category ? props.category : ''
+      this.setState({
+        post
+      })
+    } else {
+      this.setState({
+        post: props.post
+      })
     }
   }
 
@@ -82,7 +97,8 @@ class CreateUpdatePostButtonWithDialog extends Component {
           this.props.location.pathname + "?createPost=true" :
           this.props.location.pathname + "?updatePostId=" + this.state.post.id
         }>
-          <FaPencil size={30}/>
+          { this.state.post.id === undefined && <FaPlus size={30}/> }
+          { this.state.post.id !== undefined && <FaPencil size={30}/> }
         </Link>
         <Modal
           isOpen={
@@ -92,7 +108,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
           onRequestClose={() => this.props.history.push(this.props.location.pathname)}
         >
           <form onSubmit={this.handleSubmit}>
-            <h1>Edit Post</h1>
+            <h1>{this.state.post.id === undefined ? "Create" : "Edit"} Post</h1>
             <label>
               Title:
               <input type="text" name="name" value={this.state.post.title} onChange={this.handleTitleChange}/>

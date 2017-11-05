@@ -39,7 +39,7 @@ class DeletePostButtonWithDialog extends Component {
   }
 }
 
-function mapStateToProps ({}, ownProps) {
+function mapStateToProps (state, ownProps) {
   return {}
 }
 

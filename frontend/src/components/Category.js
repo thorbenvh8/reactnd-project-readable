@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PostsList from './PostsList'
+import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 
 class Categorie extends Component {
   render() {
     return (
       <div>
         <PostsList posts={this.props.posts}/>
+        <CreateUpdatePostButtonWithDialog category={this.props.category} />
       </div>
     )
   }
@@ -14,7 +16,8 @@ class Categorie extends Component {
 
 function mapStateToProps ({ posts, categories }, ownProps) {
   return {
-    posts: posts.list.filter(post => post.category === ownProps.match.params.category)
+    posts: posts.list.filter(post => post.category === ownProps.match.params.category),
+    category: ownProps.match.params.category
   }
 }
 
