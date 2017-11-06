@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import '../css/CreateUpdatePostButtonWithDialog.css'
 import queryString from 'query-string'
 import { updatePost, createPost } from '../actions/posts'
 import Modal from 'react-modal'
@@ -91,14 +92,14 @@ class CreateUpdatePostButtonWithDialog extends Component {
   render() {
     var queryParams = queryString.parse(this.props.location.search)
     return (
-      <span>
+      <div className="CreateUpdatePostButtonWithDialog">
         <Link to={
           this.state.post.id === undefined ?
           this.props.location.pathname + "?createPost=true" :
           this.props.location.pathname + "?updatePostId=" + this.state.post.id
         }>
-          { this.state.post.id === undefined && <FaPlus size={30}/> }
-          { this.state.post.id !== undefined && <FaPencil size={30}/> }
+          { this.state.post.id === undefined && <span><FaPlus size={30}/>Create post</span> }
+          { this.state.post.id !== undefined && <span><FaPencil size={30}/></span> }
         </Link>
         <Modal
           isOpen={
@@ -134,7 +135,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
             <Link to={this.props.location.pathname}>Cancel</Link>
           </form>
         </Modal>
-      </span>
+      </div>
     )
   }
 }
