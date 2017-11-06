@@ -7,7 +7,7 @@ import Modal from 'react-modal'
 import * as API from '../utils/api'
 import FaPencil from 'react-icons/lib/fa/pencil'
 
-class CreateUpdateCommentButtonWithDialog extends Component {
+class UpdateCommentButtonWithDialog extends Component {
   constructor(props) {
     super(props);
 
@@ -109,5 +109,5 @@ export default withRouter(
   connect(
     mapStateToProps,
     mapDispatchToProps
-  )(CreateUpdateCommentButtonWithDialog)
+  )(UpdateCommentButtonWithDialog)
 )

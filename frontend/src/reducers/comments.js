@@ -2,6 +2,7 @@ import update from 'immutability-helper'
 
 import {
   ADD_COMMENTS,
+  CREATE_COMMENT,
   UPDATE_COMMENT,
   DELETE_COMMENT
 } from '../actions/comments'
@@ -15,6 +16,15 @@ function comments(state = initialCommentsState, action) {
       return {
         ...state,
         [postId]: comments.filter(comment => !comment.deleted)
+      }
+    case CREATE_COMMENT :
+      var { comment } = action
+      console.log("comment", comment)
+      return {
+        ...state,
+        [comment.parentId]:  update(state[comment.parentId], {
+            $push: [comment]
+        })
       }
     case UPDATE_COMMENT :
       var { comment } = action

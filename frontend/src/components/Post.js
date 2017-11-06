@@ -8,6 +8,7 @@ import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
+import CreateComment from './CreateComment'
 
 const style = {
   label: {
@@ -50,6 +51,7 @@ class Post extends Component {
             <CreateUpdatePostButtonWithDialog post={this.props.post} />
             <DeletePostButtonWithDialog post={this.props.post} />
             <CommentsList comments={this.props.comments}/>
+            <CreateComment postId={this.props.post.id}/>
           </div>
         )}
       </div>
