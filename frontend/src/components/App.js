@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Switch, Route, Link } from 'react-router-dom'
+import '../css/App.css'
 import * as API from '../utils/api'
 import { loadPosts } from '../actions/posts'
 import { addComments } from '../actions/comments'
 import { loadCategories } from '../actions/categories'
-import CategoriesList from './CategoriesList'
+import CategoriesNav from './CategoriesNav'
 import Main from './Main'
 import Category from './Category'
 import Post from './Post'
@@ -36,8 +37,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Link to="/">Readable</Link>
-        <CategoriesList categories={this.props.categories}/>
+        <section className="nav">
+          <div className="home">
+            <Link to="/">Readable</Link>
+          </div>
+          <Switch>
+            <Route exact path="/" component={CategoriesNav}/>
+            <Route path="/:category" component={CategoriesNav}/>
+          </Switch>
+        </section>
         <Switch>
           <Route exact path="/" component={Main}/>
           <Route exact path='/:category' component={Category}/>

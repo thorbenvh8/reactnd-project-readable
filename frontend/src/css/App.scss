@@ -1,0 +1,17 @@
+@import '../styles/colors';
+
+div.App {
+  section.nav {
+    div.home {
+      text-align: center;
+      background: $navPrimary;
+      padding-top: 20px;
+
+      a {
+        text-decoration: none;
+        font-size: 40px;
+        color: white;
+      }
+    }
+  }
+}
