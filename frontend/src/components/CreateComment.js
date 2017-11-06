@@ -26,9 +26,10 @@ class CreateComment extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
 
-    this.state.comment.parentId = this.props.postId
+    var comment = this.state.comment
+    comment.parentId = this.props.postId
 
-    API.createComment(this.state.comment)
+    API.createComment(comment)
       .then(
         comment => {
           this.props.createComment({comment})

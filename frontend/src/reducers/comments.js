@@ -19,7 +19,6 @@ function comments(state = initialCommentsState, action) {
       }
     case CREATE_COMMENT :
       var { comment } = action
-      console.log("comment", comment)
       return {
         ...state,
         [comment.parentId]:  update(state[comment.parentId], {
