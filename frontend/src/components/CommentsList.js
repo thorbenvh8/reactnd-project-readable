@@ -7,6 +7,7 @@ import { getDateString } from '../utils/date'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
+import UpdateCommentButtonWithDialog from './UpdateCommentButtonWithDialog'
 
 class CommentsList extends Component {
   state = {
@@ -63,6 +64,9 @@ class CommentsList extends Component {
                   <button onClick={() => this.downVoteComment(comment.id)} className='icon-btn'>
                     <FaThumbsODown size={30}/>
                   </button>
+                </td>
+                <td>
+                  <UpdateCommentButtonWithDialog comment={comment}/>
                 </td>
               </tr>
             ))}

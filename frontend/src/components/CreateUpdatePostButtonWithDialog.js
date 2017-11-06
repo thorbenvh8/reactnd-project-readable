@@ -108,7 +108,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
           onRequestClose={() => this.props.history.push(this.props.location.pathname)}
         >
           <form onSubmit={this.handleSubmit}>
-            <h1>{this.state.post.id === undefined ? "Create" : "Edit"} Post</h1>
+            <h1>{this.state.post.id === undefined ? "Create" : "Update"} Post</h1>
             <label>
               Title:
               <input type="text" name="name" value={this.state.post.title} onChange={this.handleTitleChange}/>

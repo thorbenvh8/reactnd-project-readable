@@ -28,7 +28,6 @@ class Post extends Component {
   }
 
   render() {
-    console.log("post", this.props.post)
     return (
       <div>
         <h1>Post</h1>

@@ -20,7 +20,6 @@ class DeletePostButtonWithDialog extends Component {
 
   render() {
     var queryParams = queryString.parse(this.props.location.search)
-    console.log("queryParams", queryParams)
     return (
       <div>
         <Link to={this.props.location.pathname + "?deletePostId=" + this.props.post.id}>

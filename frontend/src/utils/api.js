@@ -106,6 +106,24 @@ export function voteComment (commentId, option) {
     .then((res) => res.json())
 }
 
+export function updateComment (commentId, comment) {
+  return fetch(
+    `${api}/comments/${commentId}`,
+    {
+      method: 'PUT',
+      headers: {
+        ...headers,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        body: comment.body,
+        author: comment.author
+      })
+    }
+  )
+    .then((res) => res.json())
+}
+
 export function fetchCategories () {
   return fetch(`${api}/categories`, { headers })
     .then((res) => res.json())
