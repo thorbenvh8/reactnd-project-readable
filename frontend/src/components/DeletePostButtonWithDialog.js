@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import '../css/DeletePostButtonWithDialog.css'
 import queryString from 'query-string'
 import { deletePost } from '../actions/posts'
 import Modal from 'react-modal'
@@ -21,7 +22,7 @@ class DeletePostButtonWithDialog extends Component {
   render() {
     var queryParams = queryString.parse(this.props.location.search)
     return (
-      <span>
+      <div className="DeletePostButtonWithDialog">
         <Link to={this.props.location.pathname + "?deletePostId=" + this.props.post.id}>
           <FaTrashO size={30}/>
         </Link>
@@ -34,7 +35,7 @@ class DeletePostButtonWithDialog extends Component {
           <button onClick={this.onDelete}>Delete</button>
           <Link to={this.props.location.pathname}>Cancel</Link>
         </Modal>
-      </span>
+      </div>
     )
   }
 }
