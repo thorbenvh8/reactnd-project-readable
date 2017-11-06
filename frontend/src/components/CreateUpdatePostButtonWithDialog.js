@@ -91,7 +91,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
   render() {
     var queryParams = queryString.parse(this.props.location.search)
     return (
-      <div>
+      <span>
         <Link to={
           this.state.post.id === undefined ?
           this.props.location.pathname + "?createPost=true" :
@@ -134,7 +134,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
             <Link to={this.props.location.pathname}>Cancel</Link>
           </form>
         </Modal>
-      </div>
+      </span>
     )
   }
 }

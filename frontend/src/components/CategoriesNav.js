@@ -5,7 +5,6 @@ import '../css/CategoriesNav.css'
 
 class CategoriesNav extends Component {
   render() {
-    console.log(this.props)
     return (
       <nav className="CategoriesNav">
         <ul>

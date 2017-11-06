@@ -21,7 +21,7 @@ class DeletePostButtonWithDialog extends Component {
   render() {
     var queryParams = queryString.parse(this.props.location.search)
     return (
-      <div>
+      <span>
         <Link to={this.props.location.pathname + "?deletePostId=" + this.props.post.id}>
           <FaTrashO size={30}/>
         </Link>
@@ -34,7 +34,7 @@ class DeletePostButtonWithDialog extends Component {
           <button onClick={this.onDelete}>Delete</button>
           <Link to={this.props.location.pathname}>Cancel</Link>
         </Modal>
-      </div>
+      </span>
     )
   }
 }

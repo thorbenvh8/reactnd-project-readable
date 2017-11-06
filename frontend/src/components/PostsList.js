@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import '../css/PostsList.css'
 import { updatePost } from '../actions/posts'
 import * as API from '../utils/api'
 import { getOrderBy, DESCENDING } from '../utils/sorting'
@@ -35,8 +36,7 @@ class PostsList extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Posts</h1>
+      <div className="PostsList">
         <table>
           <thead>
             <tr>
@@ -44,8 +44,8 @@ class PostsList extends Component {
               <SortableTableHeaderColumn property="author" orderBy={this.state.orderBy} onClick={this.sortPosts}>Author</SortableTableHeaderColumn>
               <SortableTableHeaderColumn property="timestamp" orderBy={this.state.orderBy} onClick={this.sortPosts}>Date</SortableTableHeaderColumn>
               <SortableTableHeaderColumn property="commentCount" orderBy={this.state.orderBy} onClick={this.sortPosts}>Comments</SortableTableHeaderColumn>
-              <SortableTableHeaderColumn colSpan="2" property="voteScore" orderBy={this.state.orderBy} onClick={this.sortPosts}>Votes</SortableTableHeaderColumn>
-              <th></th>
+              <SortableTableHeaderColumn property="voteScore" orderBy={this.state.orderBy} onClick={this.sortPosts}>Votes</SortableTableHeaderColumn>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -60,12 +60,12 @@ class PostsList extends Component {
                 <td>{post.author}</td>
                 <td>{getDateString(post.timestamp)}</td>
                 <td>{post.commentCount}</td>
-                <td>{post.voteScore}</td>
                 <td>
-                  <button onClick={() => this.upVotePost(post.id)} className='icon-btn'>
+                  <div className="vote-score">{post.voteScore}</div>
+                  <button onClick={() => this.upVotePost(post.id)} className="up">
                     <FaThumbsOUp size={30}/>
                   </button>
-                  <button onClick={() => this.downVotePost(post.id)} className='icon-btn'>
+                  <button onClick={() => this.downVotePost(post.id)} className="down">
                     <FaThumbsODown size={30}/>
                   </button>
                 </td>

@@ -2,9 +2,10 @@ import React from 'react'
 import { DESCENDING } from '../utils/sorting'
 import FaSortAsc from 'react-icons/lib/fa/sort-asc'
 import FaSortDesc from 'react-icons/lib/fa/sort-desc'
+import '../css/SortableTableHeaderColumn.css'
 
 const SortableTableHeaderColumn = (props) =>
-  <th colSpan={ props.colSpan ? props.colSpan : 1} onClick={() => props.onClick(props.property)}>
+  <th className="SortableTableHeaderColumn" onClick={() => props.onClick(props.property)}>
     { props.children }
     { props.orderBy.property === props.property &&
       (
