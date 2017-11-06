@@ -124,6 +124,19 @@ export function updateComment (commentId, comment) {
     .then((res) => res.json())
 }
 
+export function deleteComment (commentId) {
+  return fetch(
+    `${api}/comments/${commentId}`,
+    {
+      method: 'DELETE',
+      headers: {
+        ...headers
+      }
+    }
+  )
+    .then((res) => res.json())
+}
+
 export function fetchCategories () {
   return fetch(`${api}/categories`, { headers })
     .then((res) => res.json())

@@ -8,6 +8,7 @@ import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
 import UpdateCommentButtonWithDialog from './UpdateCommentButtonWithDialog'
+import DeleteCommentButtonWithDialog from './DeleteCommentButtonWithDialog'
 
 class CommentsList extends Component {
   state = {
@@ -67,6 +68,7 @@ class CommentsList extends Component {
                 </td>
                 <td>
                   <UpdateCommentButtonWithDialog comment={comment}/>
+                  <DeleteCommentButtonWithDialog comment={comment}/>
                 </td>
               </tr>
             ))}
