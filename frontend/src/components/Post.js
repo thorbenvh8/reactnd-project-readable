@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getDateString } from '../utils/date'
+import '../css/Post.css'
 import CommentsList from './CommentsList'
 import UpVoteButton from './UpVoteButton'
 import DownVoteButton from './DownVoteButton'
@@ -18,22 +19,24 @@ const style = {
 class Post extends Component {
   render() {
     return (
-      <div>
-        <h1>Post</h1>
+      <div className="Post">
         { this.props.post === undefined && (<p>Post does not exist!</p>)}
         { this.props.post !== undefined && (
           <div>
-            <Label title="Title" value={this.props.post.title}/>
-            <Label title="Author" value={this.props.post.author}/>
-            <Label title="Date" value={getDateString(this.props.post.timestamp)}/>
-            <div>
-              <Label title="Vote" value={this.props.post.voteScore}/>
-              <UpVoteButton postId={this.props.post.id}/>
-              <DownVoteButton postId={this.props.post.id}/>
+            <div className="post">
+              <h1>{this.props.post.title}</h1>
+              <div className="vote">
+                <div>{this.props.post.voteScore}</div>
+                <UpVoteButton postId={this.props.post.id}/>
+                <DownVoteButton postId={this.props.post.id}/>
+              </div>
+              <div className="author">
+                by {this.props.post.author} ({getDateString(this.props.post.timestamp)})
+                <CreateUpdatePostButtonWithDialog post={this.props.post} />
+                <DeletePostButtonWithDialog post={this.props.post} />
+              </div>
+              <div className="body">{this.props.post.body}</div>
             </div>
-            <Label title="Body" value={this.props.post.body}/>
-            <CreateUpdatePostButtonWithDialog post={this.props.post} />
-            <DeletePostButtonWithDialog post={this.props.post} />
             <CommentsList comments={this.props.comments}/>
             <CreateComment postId={this.props.post.id}/>
           </div>
@@ -60,9 +63,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Post)
-
-const Label = (props) =>
-  <div>
-    <label style={style.label} htmlFor={"post" + props.title}>{props.title}:</label>
-    <div id={"post" + props.title}>{props.value}</div>
-  </div>

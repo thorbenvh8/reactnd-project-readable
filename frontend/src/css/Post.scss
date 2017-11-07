@@ -1,0 +1,51 @@
+@import '../styles/colors';
+
+div.Post {
+  div.post {
+    background: rgba(255,255,255,0.3);
+    margin: 50px;
+    padding: 10px;
+
+    h1 {
+      margin: 0;
+      display: inline-block;
+      float: left;
+      color: white;
+    }
+
+    div.vote {
+      float: right;
+      display: inline-block;
+      div {
+        font-size: 30px;
+        color: white;
+        display: inline-block;
+      }
+      button {
+        vertical-align: super;
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    div.author {
+      clear: both;
+      color: grey;
+      font-size: 14px;
+    }
+
+    div.body {
+      margin-top: 20px;
+      color: white;
+    }
+  }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+body{
+  background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+  background: linear-gradient(to right, #25c481, #25b7c4);
+  font-family: 'Roboto', sans-serif;
+}
