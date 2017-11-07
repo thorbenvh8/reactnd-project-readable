@@ -19,7 +19,7 @@ class Main extends Component {
 
 function mapStateToProps ({ posts, categories }, ownProps) {
   return {
-    posts: posts.list
+    posts: posts
   }
 }
 

@@ -44,7 +44,7 @@ class CommentsList extends Component {
           }
           return a[this.state.orderBy.property] > b[this.state.orderBy.property]
         }).map(comment => (
-          <Comment comment={comment}/>
+          <Comment key={comment.id} comment={comment}/>
         ))}
       </div>
     )

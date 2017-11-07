@@ -19,7 +19,7 @@ class Categorie extends Component {
 
 function mapStateToProps ({ posts, categories }, ownProps) {
   return {
-    posts: posts.list.filter(post => post.category === ownProps.match.params.category),
+    posts: posts.filter(post => post.category === ownProps.match.params.category),
     category: ownProps.match.params.category
   }
 }

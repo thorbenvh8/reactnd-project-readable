@@ -6,7 +6,7 @@ export const DELETE_POST = 'DELETE_POST'
 export function loadPosts({ posts }) {
   return {
     type: LOAD_POSTS,
-    list: posts
+    posts
   }
 }
 

@@ -40,7 +40,7 @@ class Post extends Component {
 }
 
 function mapStateToProps ({ posts, comments, categories }, ownProps) {
-  var post = posts.list.find(post => post.id === ownProps.match.params.postId)
+  var post = posts.find(post => post.id === ownProps.match.params.postId)
   return {
     post,
     comments: comments[ownProps.match.params.postId] ? comments[ownProps.match.params.postId] : []

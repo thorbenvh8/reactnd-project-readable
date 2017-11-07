@@ -7,9 +7,7 @@ import {
   DELETE_POST
 } from '../actions/posts'
 
-const initialPostsState = {
-  list: []
-}
+const initialPostsState = []
 
 function posts(state = initialPostsState, action) {
   switch (action.type) {
@@ -27,47 +25,35 @@ function posts(state = initialPostsState, action) {
 }
 
 function loadPostsState(state, action) {
-  const { list } = action
-  return {
-    ...state,
-    list: list.filter(post => !post.deleted)
-  }
+  const { posts } = action
+  return posts.filter(post => !post.deleted)
 }
 
 function updatePostState(state, action) {
   var { post } = action
-  var postIndex = state.list.findIndex(function(p) {
+  var postIndex = state.findIndex(function(p) {
     return p.id === post.id;
   })
-  return {
-    ...state,
-    list: update(state.list, {
-        $splice: [[postIndex, 1, post]]
-    })
-  }
+  return update(state, {
+    $splice: [[postIndex, 1, post]]
+  })
 }
 
 function createPostState(state, action) {
   var { post } = action
-  return {
-    ...state,
-    list: update(state.list, {
-        $push: [post]
-    })
-  }
+  return update(state, {
+    $push: [post]
+  })
 }
 
 function deletePostState(state, action) {
   var { postId } = action
-  var postIndex = state.list.findIndex(function(p) {
+  var postIndex = state.findIndex(function(p) {
     return p.id === postId;
   })
-  return {
-    ...state,
-    list: update(state.list, {
-        $splice: [[postIndex, 1]]
-    })
-  }
+  return update(state, {
+    $splice: [[postIndex, 1]]
+  })
 }
 
 export default posts

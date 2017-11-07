@@ -36,7 +36,7 @@ function createCommentState(state, action) {
   var { comment } = action
   return {
     ...state,
-    [comment.parentId]:  update(state[comment.parentId], {
+    [comment.parentId]:  update(state[comment.parentId] ? state[comment.parentId] : [], {
         $push: [comment]
     })
   }
