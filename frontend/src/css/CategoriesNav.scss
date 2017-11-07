@@ -2,9 +2,9 @@
 
 nav.CategoriesNav {
   margin: 0 auto;
-  background: $navPrimary;
+  background: $primary;
   padding: 10px 0;
-  box-shadow: 0px 5px 0px $navSecondary;
+  box-shadow: 0px 5px 0px $secondary;
 
   ul {
     list-style: none;
@@ -18,7 +18,7 @@ nav.CategoriesNav {
         display: block;
         padding: 15px;
         text-decoration: none;
-        color: $navSecondary;
+        color: $secondary;
         font-weight: 800;
         text-transform: uppercase;
         margin: 0 10px;
@@ -33,7 +33,7 @@ nav.CategoriesNav {
 
       a:hover,
       a.selected {
-        color: $navPrimary;
+        color: $primary;
         z-index: 0;
 
         &:after {
@@ -55,7 +55,8 @@ nav.CategoriesNav {
         width: 100%;
         content: '.';
         color: transparent;
-        background: $navSecondary;
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #25c481, #25b7c4);
         height: 1px;
         text-align: left;
         content: '.';

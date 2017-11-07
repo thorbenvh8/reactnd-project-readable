@@ -13,13 +13,13 @@ div.App {
   section.nav {
     div.home {
       text-align: center;
-      background: $navPrimary;
+      background: $primary;
       padding-top: 20px;
 
       a {
         text-decoration: none;
         font-size: 40px;
-        color: white;
+        color: $text;
       }
     }
   }
@@ -38,7 +38,7 @@ div.ReactModal__Content {
   bottom: inherit !important;
   display: inline-block !important;
   margin-top: 50px;
-  color: white;
+  color: $text;
   text-align: left;
 
   h2 {

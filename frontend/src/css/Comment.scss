@@ -9,7 +9,7 @@ div.Comment {
     margin: 0;
     display: inline-block;
     float: left;
-    color: white;
+    color: $text;
   }
 
   div.vote {
@@ -17,7 +17,7 @@ div.Comment {
     display: inline-block;
     div {
       font-size: 22px;
-      color: white;
+      color: $text;
       display: inline-block;
     }
     button {
@@ -27,7 +27,7 @@ div.Comment {
 
   div.author {
     clear: both;
-    color: grey;
+    color: $secondary;
     font-size: 14px;
 
     div.CreateUpdatePostButtonWithDialog {

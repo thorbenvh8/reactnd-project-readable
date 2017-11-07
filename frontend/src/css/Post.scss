@@ -10,7 +10,7 @@ div.Post {
       margin: 0;
       display: inline-block;
       float: left;
-      color: white;
+      color: $text;
     }
 
     div.vote {
@@ -18,7 +18,7 @@ div.Post {
       display: inline-block;
       div {
         font-size: 30px;
-        color: white;
+        color: $text;
         display: inline-block;
       }
       button {
@@ -32,7 +32,7 @@ div.Post {
 
     div.author {
       clear: both;
-      color: grey;
+      color: $secondary;
       font-size: 14px;
 
       div.CreateUpdatePostButtonWithDialog {
@@ -42,7 +42,7 @@ div.Post {
 
     div.body {
       margin-top: 20px;
-      color: white;
+      color: $text;
     }
   }
 }
