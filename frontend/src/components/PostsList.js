@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../css/PostsList.css'
-import { updatePost } from '../actions/posts'
-import * as API from '../utils/api'
 import { getOrderBy, DESCENDING } from '../utils/sorting'
 import { getDateString } from '../utils/date'
-import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
-import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
+import UpVoteButton from './UpVoteButton'
+import DownVoteButton from './DownVoteButton'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 
@@ -18,16 +15,6 @@ class PostsList extends Component {
       property: "voteScore",
       direction: DESCENDING
     }
-  }
-
-  upVotePost = (postId) => {
-    API.votePost(postId, "upVote")
-      .then(post => this.props.updatePost({ post }))
-  }
-
-  downVotePost = (postId) => {
-    API.votePost(postId, "downVote")
-      .then(post => this.props.updatePost({ post }))
   }
 
   sortPosts = (property) => {
@@ -62,12 +49,8 @@ class PostsList extends Component {
                 <td>{post.commentCount}</td>
                 <td>
                   <div className="vote-score">{post.voteScore}</div>
-                  <button onClick={() => this.upVotePost(post.id)} className="up">
-                    <FaThumbsOUp size={30}/>
-                  </button>
-                  <button onClick={() => this.downVotePost(post.id)} className="down">
-                    <FaThumbsODown size={30}/>
-                  </button>
+                  <UpVoteButton postId={post.id}/>
+                  <DownVoteButton postId={post.id}/>
                 </td>
                 <td>
                   <CreateUpdatePostButtonWithDialog post={post} />
@@ -82,19 +65,4 @@ class PostsList extends Component {
   }
 }
 
-function mapStateToProps ({ posts, categories }) {
-  return {}
-}
-
-function mapDispatchToProps (dispatch) {
-  return {
-    updatePost: (data) => dispatch(updatePost(data))
-  }
-}
-
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PostsList)
-)
+export default PostsList

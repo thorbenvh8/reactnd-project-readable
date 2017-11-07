@@ -24,7 +24,7 @@ class DeletePostButtonWithDialog extends Component {
     return (
       <div className="DeletePostButtonWithDialog">
         <Link to={this.props.location.pathname + "?deletePostId=" + this.props.post.id}>
-          <FaTrashO size={30}/>
+          <FaTrashO size={20}/>
         </Link>
         <Modal
           isOpen={this.props.post.id !== undefined && queryParams.deletePostId === this.props.post.id}

@@ -1,0 +1,11 @@
+@import '../styles/colors';
+
+button.DownVoteButton {
+  color: white;
+  background-color: transparent;
+  border: none;
+
+  :hover {
+    color: red;
+  }
+}

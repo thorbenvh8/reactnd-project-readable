@@ -98,8 +98,8 @@ class CreateUpdatePostButtonWithDialog extends Component {
           this.props.location.pathname + "?createPost=true" :
           this.props.location.pathname + "?updatePostId=" + this.state.post.id
         }>
-          { this.state.post.id === undefined && <span><FaPlus size={30}/>Create post</span> }
-          { this.state.post.id !== undefined && <span><FaPencil size={30}/></span> }
+          { this.state.post.id === undefined && <span><FaPlus size={20}/>Create post</span> }
+          { this.state.post.id !== undefined && <span><FaPencil size={20}/></span> }
         </Link>
         <Modal
           isOpen={

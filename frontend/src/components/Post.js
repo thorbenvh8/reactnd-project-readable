@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getDateString } from '../utils/date'
-import { updatePost } from '../actions/posts'
-import * as API from '../utils/api'
 import CommentsList from './CommentsList'
-import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
-import FaThumbsOUp from 'react-icons/lib/fa/thumbs-o-up'
+import UpVoteButton from './UpVoteButton'
+import DownVoteButton from './DownVoteButton'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 import CreateComment from './CreateComment'
@@ -18,16 +16,6 @@ const style = {
 }
 
 class Post extends Component {
-  upVotePost = (postId) => {
-    API.votePost(postId, "upVote")
-      .then(post => this.props.updatePost({ post }))
-  }
-
-  downVotePost = (postId) => {
-    API.votePost(postId, "downVote")
-      .then(post => this.props.updatePost({ post }))
-  }
-
   render() {
     return (
       <div>
@@ -40,12 +28,8 @@ class Post extends Component {
             <Label title="Date" value={getDateString(this.props.post.timestamp)}/>
             <div>
               <Label title="Vote" value={this.props.post.voteScore}/>
-              <button onClick={() => this.upVotePost(this.props.post.id)} className='icon-btn'>
-                <FaThumbsOUp size={30}/>
-              </button>
-              <button onClick={() => this.downVotePost(this.props.post.id)} className='icon-btn'>
-                <FaThumbsODown size={30}/>
-              </button>
+              <UpVoteButton postId={this.props.post.id}/>
+              <DownVoteButton postId={this.props.post.id}/>
             </div>
             <Label title="Body" value={this.props.post.body}/>
             <CreateUpdatePostButtonWithDialog post={this.props.post} />
@@ -69,7 +53,6 @@ function mapStateToProps ({ posts, comments, categories }, ownProps) {
 
 function mapDispatchToProps (dispatch) {
   return {
-    updatePost: (data) => dispatch(updatePost(data))
   }
 }
 
