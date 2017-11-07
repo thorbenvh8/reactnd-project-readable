@@ -1,8 +1,8 @@
 export function getDateString(timestamp) {
   var date = new Date(timestamp)
 
-  // Day part from the timestamp
-  var day = date.getDay()
+  // Date part from the timestamp
+  var day = date.getDate()
   // Month part from the timestamp
   var month = date.getMonth()
   // Year part from the timestamp
