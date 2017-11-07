@@ -38,56 +38,61 @@ div.ReactModal__Content {
   bottom: inherit !important;
   display: inline-block !important;
   margin-top: 50px;
+  color: white;
+  text-align: left;
 
-  form {
-    text-align: left;
-    color: white;
+  h2 {
+    margin-top: 0px;
+  }
 
-    h2 {
-      margin-top: 0px;
+  p {
+    max-width: 200px;
+  }
+
+  label {
+    display: block;
+
+    div,
+    select,
+    input,
+    textarea {
+      margin-bottom: 5px;
+      width: 100%;
     }
 
-    label {
-      div,
-      select,
-      input,
-      textarea {
-        margin-bottom: 5px;
-        width: 100%;
-      }
-
-      input,
-      textarea {
-        background: rgba(255,255,255,0.3);
-        border-style: hidden;
-      }
-
-      textarea {
-        height: 200px;
-        width: 500px;
-      }
+    input,
+    textarea {
+      background: rgba(255,255,255,0.3);
+      border-style: hidden;
     }
 
-    input[type="submit"] {
-      margin-right: 5px;
+    textarea {
+      height: 200px;
+      width: 500px;
     }
-    a {
-      -webkit-appearance: push-button;
-      user-select: none;
-      white-space: pre;
-      align-items: flex-start;
-      text-align: center;
-      cursor: default;
-      color: buttontext;
-      background-color: buttonface;
-      box-sizing: border-box;
-      padding: 2px 6px 3px;
-      border-width: 2px;
-      border-style: outset;
-      border-color: buttonface;
-      border-image: initial;
-      font-size: 12px;
-      text-decoration: none;
-    }
+  }
+
+  input[type="submit"],
+  button {
+    margin-right: 5px;
+  }
+
+  a {
+    -webkit-appearance: push-button;
+    user-select: none;
+    white-space: pre;
+    align-items: flex-start;
+    text-align: center;
+    cursor: default;
+    color: buttontext;
+    background-color: buttonface;
+    box-sizing: border-box;
+    padding: 2px 6px 3px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonface;
+    border-image: initial;
+    font-size: 12px;
+    text-decoration: none;
   }
 }

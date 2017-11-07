@@ -30,8 +30,8 @@ class DeletePostButtonWithDialog extends Component {
           isOpen={this.props.post.id !== undefined && queryParams.deletePostId === this.props.post.id}
           onRequestClose={() => this.props.history.push(this.props.location.pathname)}
         >
-          <h1>Delete Post</h1>
-          <p>Do you really want to delete {this.props.post.title} by {this.props.post.author}?</p>
+          <h2>Delete post</h2>
+          <p>Do you really want to delete <b>{this.props.post.title}</b> by <i>{this.props.post.author}</i>?</p>
           <button onClick={this.onDelete}>Delete</button>
           <Link to={this.props.location.pathname}>Cancel</Link>
         </Modal>
