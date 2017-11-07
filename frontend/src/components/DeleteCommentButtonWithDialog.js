@@ -54,8 +54,8 @@ class DeleteCommentButtonWithDialog extends Component {
           isOpen={this.state.isOpen}
           onRequestClose={this.onClose}
         >
-          <h1>Delete Comment</h1>
-          <p>Do you really want to delete {this.props.comment.body} by {this.props.comment.author}?</p>
+          <h2>Delete comment</h2>
+          <p>Do you really want to delete <b>{this.props.comment.body}</b> by <i>{this.props.comment.author}</i>?</p>
           <button onClick={this.onDelete}>Delete</button>
           <button onClick={this.onClose}>Cancel</button>
         </Modal>

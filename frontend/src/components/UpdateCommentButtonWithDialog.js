@@ -78,13 +78,13 @@ class UpdateCommentButtonWithDialog extends Component {
           onRequestClose={this.onClose}
         >
           <form onSubmit={this.handleSubmit}>
-            <h1>Update Comment</h1>
+            <h2>Update comment</h2>
             <label>
-              Body:
+              <div>Body:</div>
               <textarea name="name" value={this.state.comment.body} onChange={this.handleBodyChange}/>
             </label>
             <label>
-              Author:
+              <div>Author:</div>
               <input type="text" name="name" value={this.state.comment.author} onChange={this.handleAuthorChange}/>
             </label>
             <input type="submit" value="Update" />
