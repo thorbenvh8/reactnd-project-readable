@@ -8,3 +8,9 @@ div.CreateUpdatePostButtonWithDialog {
     text-decoration: none;
   }
 }
+
+form.CreateUpdatePostButtonWithDialog {
+  label {
+    display: block;
+  }
+}

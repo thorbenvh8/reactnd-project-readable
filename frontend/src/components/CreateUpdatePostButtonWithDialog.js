@@ -102,24 +102,25 @@ class CreateUpdatePostButtonWithDialog extends Component {
           { this.state.post.id !== undefined && <span><FaPencil size={20}/></span> }
         </Link>
         <Modal
+
           isOpen={
             (this.state.post.id === undefined && queryParams.createPost === 'true') ||
             (this.state.post.id !== undefined && queryParams.updatePostId === this.state.post.id)
           }
           onRequestClose={() => this.props.history.push(this.props.location.pathname)}
         >
-          <form onSubmit={this.handleSubmit}>
-            <h1>{this.state.post.id === undefined ? "Create" : "Update"} Post</h1>
+          <form onSubmit={this.handleSubmit} className="CreateUpdatePostButtonWithDialog">
+            <h2>{this.state.post.id === undefined ? "Create" : "Update"} post</h2>
             <label>
-              Title:
+              <div>Title: </div>
               <input type="text" name="name" value={this.state.post.title} onChange={this.handleTitleChange}/>
             </label>
             <label>
-              Author:
+              <div>Author: </div>
               <input type="text" name="name" value={this.state.post.author} onChange={this.handleAuthorChange}/>
             </label>
             <label>
-              Category:
+              <div>Category: </div>
               <select value={this.state.post.category} onChange={this.handleCategoryChange}>
                 <option key="empty" value="" disabled>select ..</option>
                 { this.props.categories.map(category => (
@@ -128,10 +129,10 @@ class CreateUpdatePostButtonWithDialog extends Component {
               </select>
             </label>
             <label>
-              Body:
+              <div>Body: </div>
               <textarea name="name" value={this.state.post.body} onChange={this.handleBodyChange}/>
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value={this.state.post.id === undefined ? "Create" : "Update"} />
             <Link to={this.props.location.pathname}>Cancel</Link>
           </form>
         </Modal>
