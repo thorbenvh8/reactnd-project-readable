@@ -13,7 +13,7 @@ class Post extends Component {
   render() {
     return (
       <div className="Post">
-        { this.props.post === undefined && (<p>Post does not exist!</p>)}
+        { this.props.post === undefined && (<p className="not-existing">Post does not exist!</p>)}
         { this.props.post !== undefined && (
           <div>
             <div className="post">

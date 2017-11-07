@@ -1,6 +1,11 @@
 @import '../styles/colors';
 
 div.Post {
+
+  p.not-existing {
+    color: $text;
+    margin: 50px;
+  }
   div.post {
     background: rgba(255,255,255,0.3);
     margin: 50px 50px 10px 50px;
