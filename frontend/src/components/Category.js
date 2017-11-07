@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PostsList from './PostsList'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
+import '../css/Category.css'
 
 class Categorie extends Component {
   render() {
     return (
-      <div>
+      <div className="Category">
+        <div className="create">
+          <CreateUpdatePostButtonWithDialog category={this.props.category} />
+        </div>
         <PostsList posts={this.props.posts}/>
-        <CreateUpdatePostButtonWithDialog category={this.props.category} />
       </div>
     )
   }
