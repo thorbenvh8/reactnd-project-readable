@@ -143,7 +143,7 @@ class CreateUpdatePostButtonWithDialog extends Component {
 
 function mapStateToProps ({ categories }, ownProps) {
   return {
-    categories: categories.list.map(category => category.name)
+    categories: categories.map(category => category.name)
   }
 }
 

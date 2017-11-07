@@ -23,7 +23,7 @@ class CategoriesNav extends Component {
 
 function mapStateToProps ({ categories }, ownProps) {
   return {
-    categories: categories.list.map(category => {
+    categories: categories.map(category => {
       return {
         ...category,
         className: ownProps.match.params.category === category.name ? "selected" : ""

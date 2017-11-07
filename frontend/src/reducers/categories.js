@@ -3,19 +3,13 @@ import {
 } from '../actions/categories'
 
 
-const initialCategoriesState = {
-  list: []
-}
+const initialCategoriesState = []
 
 function categories(state = initialCategoriesState, action) {
   switch (action.type) {
     case LOAD_CATEGORIES :
-      const { list } = action
-      return {
-        ...state,
-        ...categories,
-        list
-      }
+      const { categories } = action
+      return categories
     default :
       return state
   }
