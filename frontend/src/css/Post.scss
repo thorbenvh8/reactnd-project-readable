@@ -3,7 +3,7 @@
 div.Post {
   div.post {
     background: rgba(255,255,255,0.3);
-    margin: 50px;
+    margin: 50px 50px 10px 50px;
     padding: 10px;
 
     h1 {
@@ -34,6 +34,10 @@ div.Post {
       clear: both;
       color: grey;
       font-size: 14px;
+
+      div.CreateUpdatePostButtonWithDialog {
+        margin-left: 5px;
+      }
     }
 
     div.body {

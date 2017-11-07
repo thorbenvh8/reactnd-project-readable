@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import '../css/DeleteCommentButtonWithDialog.css'
 import queryString from 'query-string'
 import { deleteComment } from '../actions/comments'
 import Modal from 'react-modal'
@@ -45,9 +46,9 @@ class DeleteCommentButtonWithDialog extends Component {
 
   render() {
     return (
-      <div>
+      <div className="DeleteCommentButtonWithDialog">
         <Link to={this.props.location.pathname + "?deleteCommentId=" + this.props.comment.id} onClick={this.onOpen}>
-          <FaTrashO size={30}/>
+          <FaTrashO size={20}/>
         </Link>
         <Modal
           isOpen={this.state.isOpen}

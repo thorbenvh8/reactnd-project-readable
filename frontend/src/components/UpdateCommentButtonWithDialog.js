@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import '../css/UpdateCommentButtonWithDialog.css'
 import queryString from 'query-string'
 import { updateComment } from '../actions/comments'
 import Modal from 'react-modal'
@@ -68,9 +69,9 @@ class UpdateCommentButtonWithDialog extends Component {
 
   render() {
     return (
-      <div>
+      <div className="UpdateCommentButtonWithDialog">
         <Link to={this.props.location.pathname + "?updateCommentId=" + this.state.comment.id} onClick={this.onOpen}>
-          <FaPencil size={30}/>
+          <FaPencil size={20}/>
         </Link>
         <Modal
           isOpen={this.state.isOpen}

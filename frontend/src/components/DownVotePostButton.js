@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updatePost } from '../actions/posts'
-import '../css/DownVoteButton.css'
+import '../css/DownVotePostButton.css'
 import * as API from '../utils/api'
 import FaThumbsODown from 'react-icons/lib/fa/thumbs-o-down'
 
-class DownVoteButton extends Component {
+class DownVotePostButton extends Component {
   downVotePost = () => {
     API.votePost(this.props.postId, "downVote")
       .then(post => this.props.updatePost({ post }))
@@ -13,7 +13,7 @@ class DownVoteButton extends Component {
 
   render() {
     return (
-      <button onClick={this.downVotePost} className="DownVoteButton">
+      <button onClick={this.downVotePost} className="DownVotePostButton">
         <FaThumbsODown size={20}/>
       </button>
     )
@@ -32,4 +32,4 @@ function mapDispatchToProps (dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DownVoteButton)
+)(DownVotePostButton)

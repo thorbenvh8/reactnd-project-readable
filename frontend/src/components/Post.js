@@ -3,18 +3,11 @@ import { connect } from 'react-redux'
 import { getDateString } from '../utils/date'
 import '../css/Post.css'
 import CommentsList from './CommentsList'
-import UpVoteButton from './UpVoteButton'
-import DownVoteButton from './DownVoteButton'
+import UpVotePostButton from './UpVotePostButton'
+import DownVotePostButton from './DownVotePostButton'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 import CreateComment from './CreateComment'
-
-const style = {
-  label: {
-    "float": "left",
-    "marginRight": "5px"
-  }
-}
 
 class Post extends Component {
   render() {
@@ -27,8 +20,8 @@ class Post extends Component {
               <h1>{this.props.post.title}</h1>
               <div className="vote">
                 <div>{this.props.post.voteScore}</div>
-                <UpVoteButton postId={this.props.post.id}/>
-                <DownVoteButton postId={this.props.post.id}/>
+                <UpVotePostButton postId={this.props.post.id}/>
+                <DownVotePostButton postId={this.props.post.id}/>
               </div>
               <div className="author">
                 by {this.props.post.author} ({getDateString(this.props.post.timestamp)})

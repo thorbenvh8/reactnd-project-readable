@@ -1,0 +1,11 @@
+@import '../styles/colors';
+
+button.UpVotePostButton {
+  color: white;
+  background-color: transparent;
+  border: none;
+
+  :hover {
+    color: green;
+  }
+}

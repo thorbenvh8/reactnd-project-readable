@@ -1,0 +1,12 @@
+@import '../styles/colors';
+
+div.CommentsList {
+  div.orderBy {
+    margin: 10px 50px;
+    text-align: right;
+
+    select {
+      margin: 0px 0px 0px 10px;
+    }
+  }
+}

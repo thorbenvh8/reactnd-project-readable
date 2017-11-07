@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import '../css/CreateComment.css'
 import { createComment } from '../actions/comments'
 import * as API from '../utils/api'
 
@@ -50,19 +51,21 @@ class CreateComment extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Create Comment</h1>
-          <label>
-            Body:
-            <textarea name="name" value={this.state.comment.body} onChange={this.handleBodyChange}/>
-          </label>
-          <label>
-            Author:
-            <input type="text" name="name" value={this.state.comment.author} onChange={this.handleAuthorChange}/>
-          </label>
-          <input type="submit" value="Create" />
-          <button onClick={this.onClear}>Clear</button>
-        </form>
+        <div className="CreateComment">
+          <form onSubmit={this.handleSubmit}>
+            <div className="create">Create comment</div>
+            <label>
+              <div>Body: </div>
+              <textarea name="name" value={this.state.comment.body} onChange={this.handleBodyChange}/>
+            </label>
+            <label>
+              <div>Author: </div>
+              <input type="text" name="name" value={this.state.comment.author} onChange={this.handleAuthorChange}/>
+            </label>
+            <input type="submit" value="Create" />
+            <button onClick={this.onClear}>Clear</button>
+          </form>
+        </div>
       </div>
     )
   }

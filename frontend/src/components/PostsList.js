@@ -4,8 +4,8 @@ import '../css/PostsList.css'
 import { getOrderBy, DESCENDING } from '../utils/sorting'
 import { getDateString } from '../utils/date'
 import SortableTableHeaderColumn from './SortableTableHeaderColumn'
-import UpVoteButton from './UpVoteButton'
-import DownVoteButton from './DownVoteButton'
+import UpVotePostButton from './UpVotePostButton'
+import DownVotePostButton from './DownVotePostButton'
 import CreateUpdatePostButtonWithDialog from './CreateUpdatePostButtonWithDialog'
 import DeletePostButtonWithDialog from './DeletePostButtonWithDialog'
 
@@ -49,8 +49,8 @@ class PostsList extends Component {
                 <td>{post.commentCount}</td>
                 <td>
                   <div className="vote-score">{post.voteScore}</div>
-                  <UpVoteButton postId={post.id}/>
-                  <DownVoteButton postId={post.id}/>
+                  <UpVotePostButton postId={post.id}/>
+                  <DownVotePostButton postId={post.id}/>
                 </td>
                 <td>
                   <CreateUpdatePostButtonWithDialog post={post} />

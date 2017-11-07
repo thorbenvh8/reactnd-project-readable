@@ -1,0 +1,37 @@
+@import '../styles/colors';
+
+div.Comment {
+  background: rgba(255,255,255,0.3);
+  margin: 10px 50px 10px 300px;
+  padding: 10px;
+
+  div.body {
+    margin: 0;
+    display: inline-block;
+    float: left;
+    color: white;
+  }
+
+  div.vote {
+    float: right;
+    display: inline-block;
+    div {
+      font-size: 22px;
+      color: white;
+      display: inline-block;
+    }
+    button {
+      vertical-align: super;
+    }
+  }
+
+  div.author {
+    clear: both;
+    color: grey;
+    font-size: 14px;
+
+    div.CreateUpdatePostButtonWithDialog {
+      margin-left: 5px;
+    }
+  }
+}
