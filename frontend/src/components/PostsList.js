@@ -56,7 +56,7 @@ class PostsList extends Component {
               return a[this.state.orderBy.property] > b[this.state.orderBy.property]
             }).map(post => (
               <tr key={post.id}>
-                <td><Link to={'/' + post.category + '/' + post.id}>{post.title}</Link></td>
+                <td><Link to={'/' + post.category + '/' + post.id} className="post">{post.title}</Link></td>
                 <td>{post.author}</td>
                 <td>{getDateString(post.timestamp)}</td>
                 <td>{post.commentCount}</td>

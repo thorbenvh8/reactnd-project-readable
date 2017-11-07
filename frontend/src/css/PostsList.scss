@@ -36,6 +36,10 @@ div.PostsList {
         font-size: 12px;
         color: #fff;
         border-bottom: solid 1px rgba(255,255,255,0.1);
+
+        a.post {
+          color: black;
+        }
       }
     }
   }
