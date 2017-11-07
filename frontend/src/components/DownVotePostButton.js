@@ -21,6 +21,7 @@ class DownVotePostButton extends Component {
 }
 
 function mapStateToProps (state, ownProps) {
+  return {}
 }
 
 function mapDispatchToProps (dispatch) {
